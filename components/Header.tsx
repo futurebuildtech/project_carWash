@@ -34,9 +34,6 @@ export default function Header() {
               <Link href="#plans" className="text-gray-300 hover:text-gold transition duration-300">
                 Plans
               </Link>
-              {/* <Link href="#about" className="text-gray-300 hover:text-gold transition duration-300">
-                About
-              </Link> */}
 
               {isAuthenticated && user ? (
                 <div className="flex items-center gap-4">
@@ -45,7 +42,7 @@ export default function Header() {
                     className="flex items-center gap-2 text-gray-300 hover:text-gold transition"
                   >
                     <User size={20} />
-                    {user.name.split(' ')[0]}
+                    {user.name?.split(' ')[0]}
                   </Link>
                   {user.name === 'Admin' && (
                     <Link
@@ -63,14 +60,7 @@ export default function Header() {
                     <LogOut size={20} />
                   </button>
                 </div>
-              ) : (
-                // <Link
-                //   href="/auth/login"
-                //   className="btn-premium text-black px-6 py-2 rounded-lg font-semibold"
-                // >
-                //   Login
-                // </Link>
-              )}
+              ) : null}
             </nav>
 
             {/* Mobile Menu Button */}
