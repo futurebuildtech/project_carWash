@@ -5,7 +5,7 @@ import { useUserStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Calendar, Droplets, TrendingUp, Bell } from 'lucide-react';
-import { BookingImageBackground } from "@/components/BookingImageBackground";
+// import { BookingImageBackground } from "@/components/BookingImageBackground";
 
 export default function Dashboard() {
   const { user, isAuthenticated, selectedService, serviceHistory } = useUserStore();
