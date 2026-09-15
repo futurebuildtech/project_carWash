@@ -3,7 +3,7 @@ import dbConnect from '@/lib/dbConnect';
 import Booking from '@/models/Booking';
 import Customer from '@/models/Customer';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // 1. Connect to MongoDB Atlas
     await dbConnect();
