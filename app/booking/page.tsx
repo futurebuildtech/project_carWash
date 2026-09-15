@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { User, Phone, MapPin, Calendar, MessageSquare, Send, Sparkles, ShieldCheck, Car, Bike } from 'lucide-react';
+import {  Calendar, Send, Sparkles, ShieldCheck, Car, Bike } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Background } from '@/components/Background';
