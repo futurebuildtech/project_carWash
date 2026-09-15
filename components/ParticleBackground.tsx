@@ -52,7 +52,7 @@ export const ParticleBackground = () => {
         outModes: { default: "out" },
       },
       number: {
-        density: { enable: true, area: 800 },
+        density: { enable: true, width: 800 },
         value: 60,
       },
       opacity: { value: 0.3 },
