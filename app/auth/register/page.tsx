@@ -210,9 +210,9 @@ export default function RegisterPage() {
 
               <p className="mt-6 text-center text-gray-400 text-sm">
                 Already registered?{' '}
-                <Link href="/auth/login" className="text-gold hover:text-darkGold font-semibold">
+                {/* <Link href="/auth/login" className="text-gold hover:text-darkGold font-semibold">
                   Login here
-                </Link>
+                </Link> */}
               </p>
             </div>
           </div>

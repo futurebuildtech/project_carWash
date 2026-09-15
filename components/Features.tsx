@@ -27,35 +27,30 @@ const features = [
 ];
 
 export const Features = () => {
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
+  // Animation for the image cards
+  const imageHover = {
+    hover: { 
+      scale: 1.05, 
+      rotate: 1,
+      transition: { type: "spring", stiffness: 300, damping: 15 }
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 }
-  };
-
   return (
-    <section id="about" className="py-24 bg-slate-900/30 relative overflow-hidden">
+    <section id="about" className="py-24 bg-premium-black relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           
-          {/* Left Content: Text & Features */}
+          {/* Left Content */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl leading-tight">
               Why Choose Our <br/>
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold via-gold-light to-gold-dark bg-clip-text text-transparent">
                 Smart Wash System?
               </span>
             </h2>
@@ -64,82 +59,95 @@ export const Features = () => {
               ensuring every inch is cleaned perfectly without any brush contact.
             </p>
 
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
+            <div className="grid gap-6 sm:grid-cols-2">
               {features.map((f, i) => (
-                <motion.div key={i} variants={itemVariants} className="flex gap-5 group">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                    <f.icon size={28} />
+                <div key={i} className="flex gap-4 group">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/10 text-gold border border-gold/20 group-hover:bg-gold group-hover:text-black transition-all duration-300">
+                    <f.icon size={24} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">
-                      {f.title}
-                    </h4>
-                    <p className="text-slate-400 leading-relaxed">{f.desc}</p>
+                    <h4 className="text-lg font-semibold text-white mb-1">{f.title}</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">{f.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Right Content: Advanced Visual Grid */}
+          {/* Right Content: Interactive Image Grid */}
           <div className="grid grid-cols-2 gap-6 relative">
-            {/* Decorative Glow */}
-            <div className="absolute inset-0 bg-blue-500/10 blur-[100px] -z-10 rounded-full" />
-            
+            {/* Left Column of Grid */}
             <div className="space-y-6 pt-12">
+              {/* Image 1: Car Detailing */}
               <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="h-72 rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-500 p-[1px] shadow-2xl shadow-blue-500/20"
+                variants={imageHover}
+                whileHover="hover"
+                className="h-72 rounded-3xl bg-gradient-to-br from-gold/50 to-gold-dark/20 p-[1px] shadow-2xl shadow-gold/5 overflow-hidden"
               >
-                <div className="h-full w-full rounded-[23px] bg-slate-950 overflow-hidden relative">
+                <div className="h-full w-full rounded-[23px] bg-slate-950 relative overflow-hidden group">
                    <img 
                     src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&q=80&w=600" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 hover:opacity-60 transition-opacity"
-                    alt="Car Detail"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                    alt="Car Precision Wash"
                    />
-                   <div className="absolute bottom-4 left-4">
-                      <div className="flex items-center gap-2 rounded-full bg-blue-500/20 backdrop-blur-md px-3 py-1 border border-white/10">
-                        <CheckCircle2 size={14} className="text-blue-400" />
-                        <span className="text-xs font-bold text-white uppercase tracking-wider">Precision</span>
+                   <div className="absolute bottom-4 left-4 z-10">
+                      <div className="flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 border border-gold/30">
+                        <CheckCircle2 size={14} className="text-gold" />
+                        <span className="text-[10px] font-bold text-white uppercase tracking-wider">Precision</span>
                       </div>
                    </div>
                 </div>
               </motion.div>
               
+              {/* Image 3: Bike Wash (New) */}
               <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="h-52 rounded-3xl bg-slate-800/50 backdrop-blur-sm border border-white/5"
-              />
+                variants={imageHover}
+                whileHover="hover"
+                className="h-52 rounded-3xl bg-gradient-to-br from-gold/30 to-transparent p-[1px] shadow-xl"
+              >
+                <div className="h-full w-full rounded-[23px] bg-slate-950 relative overflow-hidden group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=600" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500"
+                    alt="Bike Detailing"
+                  />
+                </div>
+              </motion.div>
             </div>
 
+            {/* Right Column of Grid */}
             <div className="space-y-6">
+              {/* Image 4: Bike Detailing (New) */}
               <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="h-52 rounded-3xl bg-slate-800/50 backdrop-blur-sm border border-white/5"
-              />
-              
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="h-72 rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 p-[1px] shadow-2xl shadow-cyan-500/20"
+                variants={imageHover}
+                whileHover="hover"
+                className="h-52 rounded-3xl bg-gradient-to-br from-gold/30 to-transparent p-[1px] shadow-xl"
               >
-                <div className="h-full w-full rounded-[23px] bg-slate-950 overflow-hidden relative">
+                <div className="h-full w-full rounded-[23px] bg-slate-950 relative overflow-hidden group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=600" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500"
+                    alt="Premium Bike Care"
+                  />
+                </div>
+              </motion.div>
+              
+              {/* Image 2: Car Foam Wash */}
+              <motion.div 
+                variants={imageHover}
+                whileHover="hover"
+                className="h-72 rounded-3xl bg-gradient-to-br from-gold/50 to-gold-dark/20 p-[1px] shadow-2xl shadow-gold/5 overflow-hidden"
+              >
+                <div className="h-full w-full rounded-[23px] bg-slate-950 relative overflow-hidden group">
                    <img 
                     src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?auto=format&fit=crop&q=80&w=600" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 hover:opacity-60 transition-opacity"
-                    alt="Water System"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                    alt="Car Foam Wash"
                    />
-                   <div className="absolute bottom-4 left-4">
-                      <div className="flex items-center gap-2 rounded-full bg-cyan-500/20 backdrop-blur-md px-3 py-1 border border-white/10">
-                        <Star size={14} className="text-cyan-400" />
-                        <span className="text-xs font-bold text-white uppercase tracking-wider">Premium</span>
+                   <div className="absolute bottom-4 left-4 z-10">
+                      <div className="flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 border border-gold/30">
+                        <Star size={14} className="text-gold" />
+                        <span className="text-[10px] font-bold text-white uppercase tracking-wider">Premium</span>
                       </div>
                    </div>
                 </div>

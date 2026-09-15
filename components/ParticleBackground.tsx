@@ -8,12 +8,16 @@ export const ParticleBackground = () => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
-    // This is the stable way to initialize in v3
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    // Safety check: only run if the function exists
+    if (typeof initParticlesEngine === "function") {
+      initParticlesEngine(async (engine) => {
+        await loadSlim(engine);
+      }).then(() => {
+        setInit(true);
+      }).catch((err) => {
+        console.error("Particles failed to load:", err);
+      });
+    }
   }, []);
 
   const options: ISourceOptions = {
@@ -28,16 +32,12 @@ export const ParticleBackground = () => {
       modes: {
         grab: {
           distance: 200,
-          links: {
-            opacity: 0.5,
-          },
+          links: { opacity: 0.5 },
         },
       },
     },
     particles: {
-      color: {
-        value: "#3b82f6", 
-      },
+      color: { value: "#3b82f6" },
       links: {
         color: "#3b82f6",
         distance: 150,
@@ -49,26 +49,15 @@ export const ParticleBackground = () => {
         enable: true,
         speed: 1.5,
         direction: "none",
-        outModes: {
-          default: "out",
-        },
+        outModes: { default: "out" },
       },
       number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 80,
+        density: { enable: true, area: 800 },
+        value: 60,
       },
-      opacity: {
-        value: 0.3,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 3 },
-      },
+      opacity: { value: 0.3 },
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 3 } },
     },
     detectRetina: true,
   };
@@ -76,7 +65,7 @@ export const ParticleBackground = () => {
   if (!init) return null;
 
   return (
-    <div className="fixed inset-0 -z-10 h-full w-full pointer-events-none">
+    <div className="fixed inset-0 -z-10 h-full w-full">
       <Particles
         id="tsparticles"
         options={options}

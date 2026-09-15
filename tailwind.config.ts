@@ -9,13 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        slate: {
-          950: "#020617",
+        gold: {
+          DEFAULT: "#D4AF37",
+          light: "#F9E2AF",
+          dark: "#AA8A2E",
+        },
+        premium: {
+          grey: "#666978",
+          darkGrey: "#4a4d5a",
+          lightGrey: "#8e91a1",
         }
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },

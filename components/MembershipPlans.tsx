@@ -1,109 +1,93 @@
-'use client';
+"use client";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, Bike, Car, Sparkles } from "lucide-react";
 
-import { Check } from 'lucide-react';
-import { MEMBERSHIP_PLANS } from '@/lib/constants';
-import { useState } from 'react';
+const bikePlans = [
+  { name: "Single Wash", price: "199", washes: "1 Wash", bonus: "", color: "bg-slate-800" },
+  { name: "Gold Plan", price: "599", washes: "3 Washes", bonus: "+ 1 Free", color: "bg-gold/10" },
+  { name: "Diamond Plan", price: "1,599", washes: "9 Washes", bonus: "+ 3 Free", color: "bg-gold/20" },
+  { name: "Platinum Plan", price: "2,999", washes: "Unlimited", bonus: "Best Value", color: "bg-gold" },
+];
 
-export default function MembershipPlans() {
-  const [activeType, setActiveType] = useState<'bike' | 'car'>('car');
+const carPlans = [
+  { name: "Single Wash", price: "499", washes: "1 Wash", bonus: "", color: "bg-slate-800" },
+  { name: "Monthly", price: "1,499", washes: "3 Washes", bonus: "+ 1 Free", color: "bg-gold/10" },
+  { name: "Quarterly", price: "3,999", washes: "9 Washes", bonus: "+ 3 Free", color: "bg-gold/20" },
+  { name: "Half-Yearly", price: "7,499", washes: "20 Washes", bonus: "+ 5 Free", color: "bg-gold" },
+];
 
-  const plans = MEMBERSHIP_PLANS[activeType];
+export const MembershipPlans = () => {
+  const [category, setCategory] = useState<"bike" | "car">("bike");
 
   return (
-    <section id="plans" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="gradient-gold">Premium Memberships</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Choose the perfect plan that fits your lifestyle. Unlock premium benefits and savings.
-          </p>
-        </div>
-
-        {/* Type Selector */}
-        <div className="flex justify-center gap-4 mb-12 animate-slide-up">
-          {(['car', 'bike'] as const).map((type) => (
-            <button
-              key={type}
-              onClick={() => setActiveType(type)}
-              className={`px-8 py-3 rounded-lg font-bold transition duration-300 ${
-                activeType === type
-                  ? 'btn-premium text-black shadow-glow-gold'
-                  : 'glass-light border border-gold border-opacity-20 text-gold hover:border-opacity-40'
-              }`}
+    <section className="bg-premium-black py-24 px-6">
+      <div className="container mx-auto">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-white">Membership Plans</h2>
+          
+          {/* Category Toggle */}
+          <div className="inline-flex rounded-2xl bg-premium-gray p-1 border border-white/5">
+            <button 
+              onClick={() => setCategory("bike")}
+              className={`flex items-center gap-2 rounded-xl px-8 py-3 font-semibold transition-all ${category === "bike" ? "bg-gold text-black" : "text-slate-400"}`}
             >
-              {type === 'car' ? '🚗 Car' : '🏍️ Bike'}
+              <Bike size={20} /> Bike
             </button>
-          ))}
-        </div>
-
-        {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {plans.map((plan, index) => (
-            <div
-              key={plan.id}
-              className={`card-premium rounded-2xl overflow-hidden border transition duration-300 animate-scale-in`}
-              style={{
-                animationDelay: `${index * 0.1}s`,
-                borderColor: plan.featured ? '#D4AF37' : 'rgba(212, 175, 55, 0.2)',
-              }}
+            <button 
+              onClick={() => setCategory("car")}
+              className={`flex items-center gap-2 rounded-xl px-8 py-3 font-semibold transition-all ${category === "car" ? "bg-gold text-black" : "text-slate-400"}`}
             >
-              {plan.featured && (
-                <div className="bg-gradient-to-r from-gold to-darkGold px-6 py-2 text-black text-center font-bold">
-                  ⭐ FEATURED
-                </div>
-              )}
-
-              <div className={`${plan.featured ? 'glass' : 'glass-light'} p-8 h-full flex flex-col border-0`}>
-                {/* Icon and Name */}
-                <div className="mb-6">
-                  <div className="text-5xl mb-3">{plan.icon}</div>
-                  <h3 className="text-2xl font-bold text-gold mb-2">{plan.name}</h3>
-                  <p className="text-gray-400 text-sm">{plan.validity}</p>
-                </div>
-
-                {/* Price */}
-                <div className="mb-6">
-                  <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gold">₹{plan.price}</span>
-                    <span className="text-gray-400 ml-2">/plan</span>
-                  </div>
-                  <p className="text-gold text-sm mt-2">{plan.washes} washes included</p>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-300">
-                      <Check size={20} className="text-gold flex-shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Button */}
-                <button className={`w-full py-3 rounded-lg font-bold transition duration-300 ${
-                  plan.featured
-                    ? 'btn-premium text-black shadow-glow-gold'
-                    : 'glass-light border border-gold border-opacity-30 text-gold hover:border-opacity-100'
-                }`}>
-                  Get {plan.name}
-                </button>
-              </div>
-            </div>
-          ))}
+              <Car size={20} /> Car
+            </button>
+          </div>
         </div>
 
-        {/* Comparison CTA */}
-        <div className="text-center mt-16 animate-fade-in">
-          <p className="text-gray-400 mb-4">Need help choosing? </p>
-          <button className="text-gold hover:text-darkGold transition font-semibold underline">
-            View Comparison →
-          </button>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <AnimatePresence mode="wait">
+            {(category === "bike" ? bikePlans : carPlans).map((plan, i) => (
+              <motion.div
+                key={`${category}-${plan.name}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative flex flex-col rounded-3xl border border-white/10 bg-premium-gray p-8 transition-all hover:border-gold/50"
+              >
+                {plan.bonus && (
+                  <div className="absolute top-4 right-4 rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase text-black">
+                    {plan.bonus}
+                  </div>
+                )}
+                <h3 className="mb-2 text-xl font-bold text-white">{plan.name}</h3>
+                <div className="mb-6 flex items-baseline gap-1">
+                  <span className="text-sm text-gold">INR</span>
+                  <span className="text-4xl font-bold text-white">{plan.price}</span>
+                </div>
+                
+                <div className="mb-8 space-y-4 flex-grow">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Check size={18} className="text-gold" />
+                    <span>{plan.washes} Total</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Check size={18} className="text-gold" />
+                    <span>Doorstep Service</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Check size={18} className="text-gold" />
+                    <span>Rajahmundry Wide</span>
+                  </div>
+                </div>
+
+                <button className="w-full rounded-xl bg-white/5 py-4 font-bold text-white border border-white/10 transition-all group-hover:bg-gold group-hover:text-black">
+                  Book Now
+                </button>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>
   );
-}
+};

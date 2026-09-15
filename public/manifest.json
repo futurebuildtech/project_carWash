@@ -1,0 +1,21 @@
+{
+  "name": "Express Wash 40",
+  "short_name": "ExpressWash",
+  "description": "Premium Doorstep Car Detailing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080829",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

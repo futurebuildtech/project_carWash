@@ -34,9 +34,9 @@ export default function Header() {
               <Link href="#plans" className="text-gray-300 hover:text-gold transition duration-300">
                 Plans
               </Link>
-              <Link href="#about" className="text-gray-300 hover:text-gold transition duration-300">
+              {/* <Link href="#about" className="text-gray-300 hover:text-gold transition duration-300">
                 About
-              </Link>
+              </Link> */}
 
               {isAuthenticated && user ? (
                 <div className="flex items-center gap-4">
@@ -64,12 +64,12 @@ export default function Header() {
                   </button>
                 </div>
               ) : (
-                <Link
-                  href="/auth/login"
-                  className="btn-premium text-black px-6 py-2 rounded-lg font-semibold"
-                >
-                  Login
-                </Link>
+                // <Link
+                //   href="/auth/login"
+                //   className="btn-premium text-black px-6 py-2 rounded-lg font-semibold"
+                // >
+                //   Login
+                // </Link>
               )}
             </nav>
 
