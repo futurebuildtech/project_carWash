@@ -1,6 +1,6 @@
 'use client';
 
-import Header from '@/components/Header';
+// import Header from '@/components/Header';
 import { useUserStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -29,7 +29,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen pb-16">
-      <Header />
+      {/* <Header /> */}
 
       <div className="pt-32 px-4">
         <div className="max-w-7xl mx-auto">

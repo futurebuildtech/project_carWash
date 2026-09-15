@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Header from '@/components/Header';
+// import Header from '@/components/Header';
 import { useUserStore, User } from '@/lib/store';
 import { Phone, Mail } from 'lucide-react';
 import { getServicePlanById } from '@/lib/constants';
@@ -88,7 +88,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-xl mx-auto">
           <div className="relative z-10">
