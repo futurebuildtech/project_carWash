@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { Users, Calendar, ShieldCheck, Car } from 'lucide-react';
+import { Users, Calendar} from 'lucide-react';
 
 export default function AdminDashboard() {
   const [data, setData] = useState({ bookings: [], customers: [] });
