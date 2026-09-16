@@ -92,14 +92,14 @@ export const Navbar = () => {
 
           {/* Mobile Menu Toggle (The 3 Lines) */}
           <div className="flex items-center gap-4 md:hidden relative z-[10001]">
-            {!isOpen && (
+            {/* {!isOpen && (
               <Link 
                 href="/auth/login" 
                 className="bg-gold text-black px-4 py-1.5 rounded-lg font-black text-[10px] uppercase tracking-widest"
               >
                 LOGIN
               </Link>
-            )}
+            )} */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gold p-1"
@@ -146,12 +146,12 @@ export const Navbar = () => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <Link 
+                  {/* <Link 
                     href="/auth/login" 
                     className="bg-gradient-to-r from-gold-dark to-gold text-black py-5 rounded-2xl text-center font-black tracking-[0.2em] text-lg block shadow-[0_10px_30px_rgba(212,175,55,0.3)]"
                   >
                     LOGIN TO ACCOUNT
-                  </Link>
+                  </Link> */}
                 </motion.div>
 
                 <div className="mt-auto pb-10 text-center">
